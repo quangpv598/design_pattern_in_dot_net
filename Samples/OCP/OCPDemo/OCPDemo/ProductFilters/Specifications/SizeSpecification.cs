@@ -16,7 +16,7 @@ namespace OCPDemo.ProductFilters.Specifications
         {
             this.size = size;
         }
-        public bool IsSatisfied(Product item)
+        public override bool IsSatisfied(Product item)
         {
             return item.Size == size;
         }

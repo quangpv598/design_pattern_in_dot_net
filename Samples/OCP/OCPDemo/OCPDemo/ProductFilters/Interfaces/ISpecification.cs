@@ -6,8 +6,12 @@ using System.Threading.Tasks;
 
 namespace OCPDemo.ProductFilters.Interfaces
 {
-    public interface ISpecification<T>
+    public abstract class ISpecification<T>
     {
-        bool IsSatisfied(T item);
+       public abstract bool IsSatisfied(T item);
+       public static ISpecification<T> operator &(ISpecification<T> first, ISpecification<T> second)
+        {
+            return new AndSpecification<T>(first, second);
+        }
     }
 }

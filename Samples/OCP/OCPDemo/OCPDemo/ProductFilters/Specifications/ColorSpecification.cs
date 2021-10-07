@@ -16,7 +16,8 @@ namespace OCPDemo.ProductFilters
         {
             this.color = color;
         }
-        public bool IsSatisfied(Product item)
+
+        public override bool IsSatisfied(Product item)
         {
             return item.Color == color;
         }

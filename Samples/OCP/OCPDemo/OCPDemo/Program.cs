@@ -2,6 +2,7 @@
 using OCPDemo.Enums;
 using OCPDemo.Models;
 using OCPDemo.ProductFilters;
+using OCPDemo.ProductFilters.Specifications;
 using System;
 
 namespace OCPDemo
@@ -22,8 +23,12 @@ namespace OCPDemo
 
             var productFilter = new ProductFilter();
 
-            var colorSpec = new ColorSpecification(Color.Green);
-            var reuslt = productFilter.Filter(products, colorSpec);
+            var colorGreenSpec = new ColorSpecification(Color.Green);
+            var sizeSmallSpec = new SizeSpecification(Size.Small);
+            var reuslt = productFilter.Filter(products, new AndSpecification<Product>(colorGreenSpec, sizeSmallSpec));
+
+            var smallGreen = colorGreenSpec & sizeSmallSpec;
+            var resultSample2 = productFilter.Filter(products, smallGreen);
 
             Console.ReadLine();
         }
